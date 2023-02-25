@@ -25,6 +25,8 @@ def menu():
     print("[4] NMAP Jackhammer scan - Loud")
     print("[5] NMAP Vulnerability scan - Vuln")
     print("[6] NMAP Hailmary scan - Everyprobe")
+    print("[7] NMAP Firewalk scan - FW setup")
+    print("[8] NMAP Decoy scan - Decoy")
     print("[0] Exit")
     
 def option1():
@@ -44,8 +46,16 @@ def option5():
     os.system('sudo nmap -v --script vuln -p- -oN VulnScan.txt ' + str(target_ip))
 def option6():
     print ("Hailmary scan selected")
-    os.system('sudo nmap -sC --version-all -p- -oN HMScan.txt ' + str(target_ip))
-    
+    os.system('sudo nmap -v -sC --version-all -p- -oN HMScan.txt ' + str(target_ip))
+def option7():
+    print ("Firewall scan selected")
+    os.system('sudo nmap -v -sA -p- -oN FWScan.txt ' + str(target_ip)) 
+def option8():
+    print ("Decoy scan selected")
+    decoy_ip = input("Insert Decoy IP: ")
+    print ("Decoy IP is: " + str(decoy_ip))
+    os.system('sudo nmap -v -D ' + str(decoy_ip) + ' ' + str(target_ip)) 
+ 
 menu() 
 option = int(input("Enter your option: "))
 
@@ -62,6 +72,10 @@ while option != 0:
         option5()
     elif option == 6: 
         option6()
+    elif option == 7: 
+        option7()
+    elif option == 8: 
+        option8()
     else:
         print("Invalid option")
 
