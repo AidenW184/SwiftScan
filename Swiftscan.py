@@ -4,8 +4,8 @@ import os
 
 print ("""\
 #-----------------------------------------------#  
- _____         _  __ _    _____                 
-/ ____|       (_)/ _| |  / ____|                
+  _____         _  __ _    _____                 
+ / ____|       (_)/ _| |  / ____|                
 | (_____      ___| |_| |_| (___   ___ __ _ _ __  
  \___ \ \ /\ / / |  _| __|\___ \ / __/ _` | '_ \ 
  ____) \ V  V /| | | | |_ ____) | (_| (_| | | | |
@@ -15,9 +15,11 @@ print ("""\
          By AJ Whitfield AKA "Hypercube"
     """)
 
+'''IP/Domain input'''
 target_ip = input("Input target Domain/IP: ")
 print ("Target Domain/IP is: " + str(target_ip))
 
+'''Selection menu'''
 def menu(): 
     print("[1] NMAP Standard scan - Service/Version/OS")
     print("[2] NMAP Discovery scan - Detection")
@@ -29,6 +31,7 @@ def menu():
     print("[8] NMAP Decoy scan - Decoy")
     print("[0] Exit")
     
+'''Command section'''
 def option1():
     print ("Standard scan selected")
     os.system('sudo nmap -v -sVCO -p- -oN StanScan.txt ' + str(target_ip))
@@ -56,6 +59,7 @@ def option8():
     print ("Decoy IP is: " + str(decoy_ip))
     os.system('sudo nmap -v -D ' + str(decoy_ip) + ' ' + str(target_ip)) 
  
+'''Numerical menu selection'''
 menu() 
 option = int(input("Enter your option: "))
 
